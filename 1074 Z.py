@@ -1,15 +1,22 @@
 n, r, c = map(int, input().split())
 
-answer=0
-for i in range(n):
-    if i == 1:
-        if r%2 == 1: answer += 2
-        if c%2 == 1: answer += 1
-    else:
-        if r%(2**(i-1)) == 0:
-                answer += ((2**(2*i-1))
-        if c%(2**(i-1)) == 0:
-                answer += ((2**(2*i-2))
-    
+def cal(n, row, col):
+        num = 0
+        x=2**i
+        if r > x/2-1:
+            num += (x*x/2)
+        if c > x/2-1:
+            num += (x*x/4)
+        return num
 
-print(answer)
+answer=0
+
+if r%2 == 1: answer += 2
+if c%2 == 1: answer += 1   
+for i in range(n, 1, -1):
+    answer += cal(i, r, c)   
+    x = 2**i
+    r = r-x/2 if r-x/2>=0 else r
+    c = c-x/2 if c-x/2>=0 else c
+     
+print(int(answer))
