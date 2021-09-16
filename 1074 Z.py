@@ -1,13 +1,13 @@
 n, r, c = map(int, input().split())
 
-def cal(n, row, col):
-        num = 0
-        x=2**i
-        if r > x/2-1:
-            num += (x*x/2)
-        if c > x/2-1:
-            num += (x*x/4)
-        return num
+def cal(i, row, col):
+    num = 0
+    x=2**i
+    if r > x/2-1:
+        num += (x*x/2)
+    if c > x/2-1:
+        num += (x*x/4)
+    return num
 
 answer=0
 
