@@ -1,30 +1,34 @@
-n = 8
+# tree = [['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','0','0'], ['0','0','0','1','1','1','0','0'], ['0','0','0','1','1','1','0','0'],
+# ['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','1','1'],['1','1','1','1','0','0','1','1']]
 
-tree = [['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','0','0'], ['0','0','0','1','1','1','0','0'], ['0','0','0','1','1','1','0','0'],
-['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','1','1'],['1','1','1','1','0','0','1','1']]
+n = int(input())
+tree = []
+for _  in range(n):
+    tree.append(list(input()))
 
 answer = []
 def cut(i, j, length):
+    
+    sol = tree[i][j]
+    status = False
+    for x in range(i, i+length):
+        if set(tree[x][j:j+length]) != set(sol):
+            status=True
+    if not status:
+        answer.append(sol)
+        return
+        
+    if length == 2:
+        answer.append('('+tree[i][j]+tree[i][j+1]+tree[i+1][j]+tree[i+1][j+1]+')')
+        return
     answer.append('(')
-    if length == 1:
-        answer.append(tree[i][j]+tree[i][j+1]+tree[i+1][j]+tree[i+1][j+1])
-
-    else:
-        sol = tree[i][j]
-        for x in range(length):
-            if set(tree[x][j:j+length]) != sol or len(set(tree[x][j:j+length])) != 1:
-                cut(i, j, length//2)
-                cut(i+length//2, j, length//2)
-                cut(i, j+length//2, length//2)
-                cut(i+length//2, j+length//2, length//2)
-                answer.append(')')
-                break
-            else:
-                answer.append(sol)
+    length = length//2
+    cut(i, j, length)
+    cut(i, j+length, length)
+    cut(i+length, j, length)
+    cut(i+length, j+length, length)
     answer.append(')')
-    return
-
+    
 cut(0, 0, n)
-print(answer)
-
+print(''.join(answer))
 
