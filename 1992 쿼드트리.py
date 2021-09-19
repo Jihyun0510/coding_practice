@@ -1,6 +1,3 @@
-# tree = [['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','0','0'], ['0','0','0','1','1','1','0','0'], ['0','0','0','1','1','1','0','0'],
-# ['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','0','0'], ['1','1','1','1','0','0','1','1'],['1','1','1','1','0','0','1','1']]
-
 n = int(input())
 tree = []
 for _  in range(n):
@@ -16,11 +13,8 @@ def cut(i, j, length):
             status=True
     if not status:
         answer.append(sol)
-        return
-        
-    if length == 2:
-        answer.append('('+tree[i][j]+tree[i][j+1]+tree[i+1][j]+tree[i+1][j+1]+')')
-        return
+        return        
+
     answer.append('(')
     length = length//2
     cut(i, j, length)
