@@ -3,7 +3,7 @@ import sys
 # m, n = 6,4
 # graph = [[0,0,0,0,0,0], [0,0,0,0,0,0],[0,0,0,0,0,0],[0,0,0,0,0,1]]
 
-already = False
+already = True
 q = deque()
 # q.append((3,5))
 
