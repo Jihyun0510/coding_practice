@@ -8,12 +8,13 @@ def bfs():
     q = deque()
     q.append((a, ""))
     visited = set()
-
+    visited.add(a)
     while q:
         now, oper = q.popleft()
-        visited.add(now)
+        # 정답과 동일할 시 return
         if now == b:
             return oper
+        
         # oper = 'D'
         dd = now*2 % 10000
         if dd not in visited:
