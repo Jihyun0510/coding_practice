@@ -15,6 +15,8 @@ for _ in range(t):
                 reverse = False
             elif not reverse:
                 reverse = True
+            #     if func == 'R':
+            # direction = not direction
         else:
             if not reverse and n:
                 case.popleft()
